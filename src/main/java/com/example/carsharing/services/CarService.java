@@ -8,15 +8,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
-public class CarServices {
+public class CarService {
     private final CarRepository carRepository;
     private final ClientRepository clientRepository;
 
     @Autowired
-    public CarServices(CarRepository carRepository, ClientRepository clientRepository){
+    public CarService(CarRepository carRepository, ClientRepository clientRepository){
         this.carRepository = carRepository;
         this.clientRepository = clientRepository;
     }
@@ -25,8 +26,8 @@ public class CarServices {
         return carRepository.findAll();
     }
 
-    public Car findById(int id){
-        return carRepository.findById(id).orElse(null);
+    public Optional<Car> findById(int id){
+        return carRepository.findById(id);
     }
 
     @Transactional

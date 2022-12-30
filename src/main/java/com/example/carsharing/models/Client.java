@@ -27,6 +27,9 @@ public class Client {
     @NotNull
     private String password;
 
+    @Column(name = "role")
+    private String role;
+
     @OneToMany(mappedBy = "driver")
     List<Car> cars;
 
@@ -38,6 +41,14 @@ public class Client {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public int getId() {
